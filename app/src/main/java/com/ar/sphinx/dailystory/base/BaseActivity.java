@@ -19,6 +19,7 @@ import dagger.android.AndroidInjection;
 /**
  * Created by sphinx.ar on 13/09/18.
  */
+//base activity of all classes
 public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewModel> extends AppCompatActivity {
 
 	//Progress bar used for all screens
