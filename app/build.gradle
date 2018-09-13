@@ -17,6 +17,16 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "NYT_BASE_URL", "\"url1\"")
+            buildConfigField("String", "CNN_BASE_URL", "\"url2\"")
+            buildConfigField("String", "BBC_BASE_URL", "\"url3\"")
+            buildConfigField("String", "NYT_API_KEY", "\"apikey1\"")
+            buildConfigField("String", "CNN_API_KEY", "\"apikey2\"")
+            buildConfigField("String", "BBC_API_KEY", "\"apikey3\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
