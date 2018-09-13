@@ -20,6 +20,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "NYT_BASE_URL", "url1")
+            buildConfigField("String", "CNN_BASE_URL", "url2")
+            buildConfigField("String", "BBC_BASE_URL", "url3")
+            buildConfigField("String", "NYT_API_KEY", "apikey1")
+            buildConfigField("String", "CNN_API_KEY", "apikey2")
+            buildConfigField("String", "BBC_API_KEY", "apikey3")
         }
     }
     dataBinding {
@@ -57,9 +63,15 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
 
-    // reactive
+    // rx
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
+    // Network dependencies
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitLibVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitLibVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.rxAdapter"
+
 
     // logger
     implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
@@ -78,6 +90,10 @@ dependencies {
     //view model dependencies
     implementation "android.arch.lifecycle:extensions:$rootProject.lifecycle"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle"
+
+    // For Debugging
+    implementation "com.facebook.stetho:stetho:$stethoLibVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stethoLibVersion"
 
 
     testImplementation 'junit:junit:4.12'

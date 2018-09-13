@@ -23,6 +23,7 @@ import dagger.android.AndroidInjection;
 public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewModel> extends AppCompatActivity {
 
 	//Progress bar used for all screens
+	//todo chng to bar
 	private ProgressDialog mProgressDialog;
 
 	//data binding and view model of each activity
