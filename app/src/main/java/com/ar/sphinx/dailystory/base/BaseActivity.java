@@ -38,11 +38,17 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 		performDataBinding();
 	}
 
+	//data binding of activity
 	private void performDataBinding() {
 		viewDataBinding = DataBindingUtil.setContentView(this,getLayoutId());
 		viewModel = viewModel == null ? getViewModel() : viewModel;
 		viewDataBinding.setVariable(getBindingVariable(), viewModel);
 		viewDataBinding.executePendingBindings();
+	}
+
+	//adding DI
+	private void performDependencyInjection() {
+		AndroidInjection.inject(this);
 	}
 
 	public void hideLoading() {
@@ -51,11 +57,13 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 		}
 	}
 
+	//show ProgressBar
 	public void showLoading() {
 		hideLoading();
 		progressBar.setVisibility(View.VISIBLE);
 	}
 
+	//hide keyboard
 	public void hideKeyboard() {
 		View view = this.getCurrentFocus();
 		if(view != null) {
@@ -67,10 +75,12 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 		}
 	}
 
+	//check for internet connectivity
 	public boolean isNetworkpresent() {
 		return CommonUtils.isNetworkConnected(getApplicationContext());
 	}
 
+	//take permissions
 	@TargetApi(Build.VERSION_CODES.M)
 	public void requestPermissionsSafely(String[] permissions, int requestCode) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -84,18 +94,18 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 				checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
 	}
 
-	private void performDependencyInjection() {
-		AndroidInjection.inject(this);
-	}
-
+	//get variable from each class
 	public abstract int getBindingVariable();
 
+	//get viewmodel of each class
 	public abstract V getViewModel();
 
+	//get binding
 	public T getViewDataBinding() {
 		return viewDataBinding;
 	}
 
+	//get Layout Id of xml
 	@LayoutRes
 	protected abstract int getLayoutId();
 

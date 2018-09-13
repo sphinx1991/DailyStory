@@ -9,6 +9,7 @@ import dagger.android.support.DaggerApplication;
 /**
  * Created by sphinx.ar on 14/09/18.
  */
+//Main entry point to the app
 public class DailyStoryApp extends DaggerApplication  {
 
 	@Override
