@@ -1,32 +1,22 @@
 package com.ar.sphinx.dailystory.di.component;
 
-import android.app.Application;
-
 import com.ar.sphinx.dailystory.DailyStoryApp;
 import com.ar.sphinx.dailystory.di.module.AppModule;
 import com.ar.sphinx.dailystory.di.module.NetworkModule;
 
 import javax.inject.Singleton;
 
-import dagger.BindsInstance;
 import dagger.Component;
-import dagger.android.support.AndroidSupportInjection;
+import dagger.android.AndroidInjector;
+import dagger.android.support.AndroidSupportInjectionModule;
 
 /**
  * Created by sphinx.ar on 14/09/18.
  */
 @Singleton
-@Component(modules = {AndroidSupportInjection.class, AppModule.class, NetworkModule.class})
-public interface AppComponent {
+@Component(modules = {AndroidSupportInjectionModule.class, AppModule.class, NetworkModule.class})
+public interface AppComponent extends AndroidInjector<DailyStoryApp> {
 
 	@Component.Builder
-	interface Builder {
-
-		@BindsInstance
-		Builder application(Application application);
-
-		AppComponent build();
-	}
-
-	void inject(DailyStoryApp app);
+	abstract class Builder extends AndroidInjector.Builder<DailyStoryApp>{}
 }

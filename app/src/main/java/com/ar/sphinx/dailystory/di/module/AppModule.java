@@ -24,11 +24,11 @@ public class AppModule {
 	Context provideContext(Application application) {
 		return application;
 	}
-
-	@Provides
-	SchedulerProvider provideSchedulerProvider() {
-		return new AppSchedulerProvider();
-	}
+//
+//	@Provides
+//	SchedulerProvider provideSchedulerProvider() {
+//		return new AppSchedulerProvider();
+//	}
 
 	@Provides
 	@NYTApiInfo
@@ -48,9 +48,9 @@ public class AppModule {
 		return BuildConfig.BBC_API_KEY;
 	}
 
-	@Provides
-	@Singleton
-	DataManager provideDataManager(AppDataManager appDataManager) {
-		return appDataManager;
-	}
+//	@Provides
+//	@Singleton
+//	DataManager provideDataManager(AppDataManager appDataManager) {
+//		return appDataManager;
+//	}
 }

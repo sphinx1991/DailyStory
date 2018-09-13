@@ -1,9 +1,23 @@
 package com.ar.sphinx.dailystory;
 
-import android.app.Application;
+
+import com.ar.sphinx.dailystory.di.component.DaggerAppComponent;
+
+import dagger.android.AndroidInjector;
+import dagger.android.support.DaggerApplication;
 
 /**
  * Created by sphinx.ar on 14/09/18.
  */
-public class DailyStoryApp extends Application {
+public class DailyStoryApp extends DaggerApplication  {
+
+	@Override
+	protected AndroidInjector<DailyStoryApp> applicationInjector() {
+		return DaggerAppComponent.builder().create(this);
+	}
+
+	@Override
+	public void onCreate() {
+		super.onCreate();
+	}
 }
