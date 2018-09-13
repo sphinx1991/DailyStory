@@ -1,7 +1,6 @@
 package com.ar.sphinx.dailystory.base;
 
 import android.annotation.TargetApi;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
@@ -13,6 +12,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ProgressBar;
+
+import com.ar.sphinx.dailystory.utils.CommonUtils;
 
 import dagger.android.AndroidInjection;
 
@@ -23,12 +25,11 @@ import dagger.android.AndroidInjection;
 public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewModel> extends AppCompatActivity {
 
 	//Progress bar used for all screens
-	//todo chng to bar
-	private ProgressDialog mProgressDialog;
+	private ProgressBar progressBar;
 
 	//data binding and view model of each activity
-	private T mViewDataBinding;
-	private V mViewModel;
+	private T viewDataBinding;
+	private V viewModel;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,21 +39,21 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 	}
 
 	private void performDataBinding() {
-		mViewDataBinding = DataBindingUtil.setContentView(this,getLayoutId());
-		mViewModel = mViewModel == null ? getViewModel() : mViewModel;
-		mViewDataBinding.setVariable(getBindingVariable(),mViewModel);
-		mViewDataBinding.executePendingBindings();
+		viewDataBinding = DataBindingUtil.setContentView(this,getLayoutId());
+		viewModel = viewModel == null ? getViewModel() : viewModel;
+		viewDataBinding.setVariable(getBindingVariable(), viewModel);
+		viewDataBinding.executePendingBindings();
 	}
 
 	public void hideLoading() {
-		if( mProgressDialog!= null && mProgressDialog.isShowing()) {
-			mProgressDialog.cancel();
+		if( progressBar!= null) {
+			progressBar.setVisibility(View.GONE);
 		}
 	}
 
 	public void showLoading() {
 		hideLoading();
-		//todo show loading dialog from utils
+		progressBar.setVisibility(View.VISIBLE);
 	}
 
 	public void hideKeyboard() {
@@ -67,9 +68,7 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 	}
 
 	public boolean isNetworkpresent() {
-		//todo from utils class
-		//for now
-		return true;
+		return CommonUtils.isNetworkConnected(getApplicationContext());
 	}
 
 	@TargetApi(Build.VERSION_CODES.M)
@@ -89,9 +88,13 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 		AndroidInjection.inject(this);
 	}
 
-	protected abstract int getBindingVariable();
+	public abstract int getBindingVariable();
 
-	protected abstract V getViewModel();
+	public abstract V getViewModel();
+
+	public T getViewDataBinding() {
+		return viewDataBinding;
+	}
 
 	@LayoutRes
 	protected abstract int getLayoutId();
