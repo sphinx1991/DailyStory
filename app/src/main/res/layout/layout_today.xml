@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="125dp"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="20dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="5dp"
+    app:cardPreventCornerOverlap="false">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/iv_url"
+            android:layout_width="113dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/sample" />
+
+        <TextView
+            android:id="@+id/tv_heading"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:padding="2dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_url"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Warning over needles in .Warning over needles in strawberries." />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_url"
+            app:layout_constraintTop_toBottomOf="@+id/tv_heading"
+            app:layout_constraintVertical_bias="0.59000003"
+            app:srcCompat="@drawable/ic_edit_pencil" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/tv_heading"
+            tools:text="15th Sep 2018" />
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_heading"
+            app:srcCompat="@drawable/ic_share_black" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
