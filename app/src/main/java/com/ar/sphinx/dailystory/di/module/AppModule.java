@@ -1,12 +1,11 @@
 package com.ar.sphinx.dailystory.di.module;
 
-import android.app.Application;
 import android.content.Context;
 
-import com.ar.sphinx.dailystory.BuildConfig;
-import com.ar.sphinx.dailystory.di.qualifiers.BBCApiInfo;
-import com.ar.sphinx.dailystory.di.qualifiers.CNNApiInfo;
-import com.ar.sphinx.dailystory.di.qualifiers.NYTApiInfo;
+import com.ar.sphinx.dailystory.DailyStoryApp;
+import com.ar.sphinx.dailystory.data.AppDataManager;
+import com.ar.sphinx.dailystory.data.DataManager;
+import com.ar.sphinx.dailystory.rxproviders.AppSchedulerProvider;
 
 import javax.inject.Singleton;
 
@@ -21,15 +20,23 @@ public class AppModule {
 
 	@Provides
 	@Singleton
-	Context provideContext(Application application) {
+	Context provideContext(DailyStoryApp application) {
 		return application;
 	}
-//
-//	@Provides
-//	SchedulerProvider provideSchedulerProvider() {
-//		return new AppSchedulerProvider();
-//	}
 
+	@Provides
+	AppSchedulerProvider provideSchedulerProvider() {
+		return new AppSchedulerProvider();
+	}
+
+	@Provides
+	@Singleton
+	DataManager provideDataManager(AppDataManager appDataManager) {
+		return appDataManager;
+	}
+
+	//to be used when different api key are available
+	/*
 	@Provides
 	@NYTApiInfo
 	String provideNYTApiKey() {
@@ -47,10 +54,5 @@ public class AppModule {
 	String provideBBCApiKey() {
 		return BuildConfig.BBC_API_KEY;
 	}
-
-//	@Provides
-//	@Singleton
-//	DataManager provideDataManager(AppDataManager appDataManager) {
-//		return appDataManager;
-//	}
+	*/
 }

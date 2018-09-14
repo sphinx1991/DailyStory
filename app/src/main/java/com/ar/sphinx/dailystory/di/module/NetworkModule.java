@@ -1,10 +1,9 @@
 package com.ar.sphinx.dailystory.di.module;
 
 import com.ar.sphinx.dailystory.BuildConfig;
-import com.ar.sphinx.dailystory.data.remote.GetNewsApi;
+import com.ar.sphinx.dailystory.data.remote.ApiHelper;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -20,49 +19,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetworkModule {
 
-//	@Named("NYTAPI")
 	@Provides
 	@Singleton
-	GetNewsApi getNewsApi(RxJava2CallAdapterFactory rxJava2CallAdapterFactory,
-	                      GsonConverterFactory gsonConverterFactory,
-	                      OkHttpClient okHttpClient) {
+	ApiHelper getNewsApi(RxJava2CallAdapterFactory rxJava2CallAdapterFactory,
+	                     GsonConverterFactory gsonConverterFactory,
+	                     OkHttpClient okHttpClient) {
 		return new Retrofit.Builder()
 				.addCallAdapterFactory(rxJava2CallAdapterFactory)
 				.addConverterFactory(gsonConverterFactory)
 				.client(okHttpClient)
+				.baseUrl(BuildConfig.BASE_URL)
 				.build()
-				.create(GetNewsApi.class);
+				.create(ApiHelper.class);
 	}
-
-//	@Named("CNNAPI")
-//	@Provides
-//	@Singleton
-//	GetNewsApi getCNNNewsApi(RxJava2CallAdapterFactory rxJava2CallAdapterFactory,
-//	                      GsonConverterFactory gsonConverterFactory,
-//	                      OkHttpClient okHttpClient) {
-//		return new Retrofit.Builder()
-//				.addCallAdapterFactory(rxJava2CallAdapterFactory)
-//				.addConverterFactory(gsonConverterFactory)
-//				.client(okHttpClient)
-//				.baseUrl(BuildConfig.CNN_BASE_URL)
-//				.build()
-//				.create(GetNewsApi.class);
-//	}
-//
-//	@Named("BBCAPI")
-//	@Provides
-//	@Singleton
-//	GetNewsApi getBBCNewsApi(RxJava2CallAdapterFactory rxJava2CallAdapterFactory,
-//	                      GsonConverterFactory gsonConverterFactory,
-//	                      OkHttpClient okHttpClient) {
-//		return new Retrofit.Builder()
-//				.addCallAdapterFactory(rxJava2CallAdapterFactory)
-//				.addConverterFactory(gsonConverterFactory)
-//				.client(okHttpClient)
-//				.baseUrl(BuildConfig.BBC_BASE_URL)
-//				.build()
-//				.create(GetNewsApi.class);
-//	}
 
 	@Provides
 	@Singleton

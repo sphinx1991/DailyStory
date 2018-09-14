@@ -48,6 +48,7 @@ ext {
     stethoLibVersion = '1.5.0'
     rxAdapter = '2.4.0'
     retrofitLibVersion = '2.2.0'
+    autoValue = '1.5.2'
 
     //Test dependencies
     junitVersion = '4.12'

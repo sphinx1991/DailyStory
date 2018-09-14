@@ -7,7 +7,7 @@
 
         <variable
             name="splashViewModel"
-            type="com.ar.sphinx.dailystory.splash.SplashViewModel" />
+            type="com.ar.sphinx.dailystory.ui.splash.SplashViewModel" />
 
     </data>
 

@@ -1,4 +1,4 @@
-package com.ar.sphinx.dailystory.base;
+package com.ar.sphinx.dailystory.ui.base;
 
 import android.annotation.TargetApi;
 import android.content.Context;
