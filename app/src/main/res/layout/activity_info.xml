@@ -18,8 +18,9 @@
 
         <ImageView
             android:id="@+id/image_url"
+            loadUrlImage="@{infoViewModel.imgUrl}"
             android:layout_width="wrap_content"
-            android:layout_height="194dp"
+            android:layout_height="300dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +35,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:text="5 Tourist attractions that you can visit in South India and North India"
+            android:text="@{infoViewModel.heading}"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -44,6 +45,7 @@
 
         <TextView
             android:id="@+id/tv_date"
+            android:text="@{infoViewModel.date}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -87,6 +89,7 @@
 
         <TextView
             android:id="@+id/tv_content"
+            android:text="@{infoViewModel.description}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"

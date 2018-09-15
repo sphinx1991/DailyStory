@@ -26,6 +26,7 @@ public class InfoActivity extends BaseActivity<ActivityInfoBinding,InfoViewModel
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		infoViewModel.setNavigator(this);
+		infoViewModel.setData(getIntent().getStringExtra("article"));
 	}
 
 	@Override
