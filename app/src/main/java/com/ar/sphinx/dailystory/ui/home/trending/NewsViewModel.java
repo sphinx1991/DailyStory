@@ -7,12 +7,12 @@ import com.ar.sphinx.dailystory.data.model.api.Article;
 /**
  * Created by sphinx.ar on 15/09/18.
  */
-public class TrendingViewModel {
+public class NewsViewModel {
 
 	public ObservableField<String> heading = new ObservableField<>();
 	public ObservableField<String> date = new ObservableField<>();
 
-	public TrendingViewModel(Article article) {
+	public NewsViewModel(Article article) {
 		this.heading.set(article.title());
 		this.date.set(article.publishedAt());
 	}

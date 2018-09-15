@@ -36,7 +36,7 @@ public class TrendingNewsListAdapter extends RecyclerView.Adapter<TrendingNewsLi
 	@Override
 	public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 		LayoutTrendingBinding trendingBinding = holder.binding;
-		trendingBinding.setTrendingViewModel(new TrendingViewModel(articleList.get(position)));
+		trendingBinding.setNewsViewModel(new NewsViewModel(articleList.get(position)));
 		trendingBinding.executePendingBindings();
 	}
 

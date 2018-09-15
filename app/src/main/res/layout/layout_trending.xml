@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="trendingViewModel"
-            type="com.ar.sphinx.dailystory.ui.home.trending.TrendingViewModel" />
+            name="newsViewModel"
+            type="com.ar.sphinx.dailystory.ui.home.trending.NewsViewModel" />
 
     </data>
 
@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/tv_heading"
-                android:text="@{trendingViewModel.heading}"
+                android:text="@{newsViewModel.heading}"
                 android:layout_width="257dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="8dp"
@@ -55,7 +55,7 @@
 
             <TextView
                 android:id="@+id/tv_date"
-                android:text="@{trendingViewModel.date}"
+                android:text="@{newsViewModel.date}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
