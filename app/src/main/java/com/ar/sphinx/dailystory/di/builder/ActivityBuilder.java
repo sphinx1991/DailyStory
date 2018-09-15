@@ -2,6 +2,8 @@ package com.ar.sphinx.dailystory.di.builder;
 
 import com.ar.sphinx.dailystory.ui.home.HomeActivity;
 import com.ar.sphinx.dailystory.ui.home.HomeActivityModule;
+import com.ar.sphinx.dailystory.ui.info.InfoActivity;
+import com.ar.sphinx.dailystory.ui.info.InfoActivityModule;
 import com.ar.sphinx.dailystory.ui.splash.SplashActivity;
 import com.ar.sphinx.dailystory.ui.splash.SplashActivityModule;
 
@@ -19,6 +21,11 @@ public abstract class ActivityBuilder {
 
 	@ContributesAndroidInjector(modules = HomeActivityModule.class)
 	abstract HomeActivity homeActivity();
+
+	@ContributesAndroidInjector(modules = InfoActivityModule.class)
+	abstract InfoActivity infoActivity();
+
+
 
 
 
