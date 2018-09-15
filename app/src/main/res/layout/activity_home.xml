@@ -142,10 +142,12 @@
 
             <ProgressBar
                 android:id="@+id/progressBarTwo"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:padding="50dp"
+                android:indeterminateOnly="true"
                 android:visibility="@{homeViewModel.isLoading ? View.VISIBLE: View.GONE}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="170dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
