@@ -14,12 +14,10 @@ import java.util.List;
  */
 public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 
-	private final MutableLiveData<List<Article>> trendingList;
+	private MutableLiveData<List<Article>> trendingList;
 
 	public HomeViewModel(DataManager dataManager, AppSchedulerProvider schedulerProvider) {
 		super(dataManager, schedulerProvider);
-		trendingList = new MutableLiveData<>();
-		getTrendingNews();
 	}
 
 	public void getTrendingNews() {
@@ -32,6 +30,10 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 	}
 
 	public MutableLiveData<List<Article>> getTrendingList() {
+		if( trendingList == null){
+			trendingList = new MutableLiveData<>();
+			getTrendingNews();
+		}
 		return trendingList;
 	}
 }

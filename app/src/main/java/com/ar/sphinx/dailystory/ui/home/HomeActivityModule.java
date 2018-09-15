@@ -14,7 +14,7 @@ public class HomeActivityModule {
 
 	@Provides
 	HomeViewModel provideHomeViewModel(DataManager dataManager,
-	                                       AppSchedulerProvider schedulerProvider) {
+	                                   AppSchedulerProvider schedulerProvider) {
 		return new HomeViewModel(dataManager, schedulerProvider);
 	}
 }
