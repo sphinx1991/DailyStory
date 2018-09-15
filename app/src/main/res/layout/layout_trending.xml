@@ -7,7 +7,7 @@
 
         <variable
             name="newsViewModel"
-            type="com.ar.sphinx.dailystory.ui.home.trending.NewsViewModel" />
+            type="com.ar.sphinx.dailystory.ui.home.todaynews.NewsViewModel" />
 
     </data>
 
@@ -26,13 +26,13 @@
 
             <ImageView
                 android:id="@+id/iv_url"
+                loadUrlImage="@{newsViewModel.imgUrl}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/sample"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
                 android:id="@+id/tv_heading"
                 android:text="@{newsViewModel.heading}"
                 android:layout_width="257dp"
-                android:layout_height="75dp"
+                android:layout_height="50dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -51,7 +51,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/tv_date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="Warning over needles in strawberries in strawberries in strawberries in strawberries." />
+                tools:text="Warning over needles in strawberries in strawberries." />
 
             <TextView
                 android:id="@+id/tv_date"

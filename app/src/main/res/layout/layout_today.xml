@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="newsViewModel"
+            type="com.ar.sphinx.dailystory.ui.home.todaynews.NewsViewModel" />
+
+    </data>
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="125dp"
@@ -18,9 +26,10 @@
 
             <ImageView
                 android:id="@+id/iv_url"
-                android:layout_width="113dp"
+                loadUrlImage="@{newsViewModel.imgUrl}"
+                android:layout_width="140dp"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +37,7 @@
 
             <TextView
                 android:id="@+id/tv_heading"
+                android:text="@{newsViewModel.heading}"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="8dp"
@@ -54,6 +64,7 @@
 
             <TextView
                 android:id="@+id/tv_date"
+                android:text="@{newsViewModel.date}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

@@ -1,4 +1,4 @@
-package com.ar.sphinx.dailystory.ui.home.trending;
+package com.ar.sphinx.dailystory.ui.home.todaynews.trending;
 
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.ar.sphinx.dailystory.R;
 import com.ar.sphinx.dailystory.data.model.api.Article;
 import com.ar.sphinx.dailystory.databinding.LayoutTrendingBinding;
+import com.ar.sphinx.dailystory.ui.home.todaynews.NewsViewModel;
 
 import java.util.Collections;
 import java.util.List;

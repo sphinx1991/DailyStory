@@ -5,6 +5,7 @@
 
     <data>
 
+        <import type="android.view.View"/>
         <variable
             name="homeViewModel"
             type="com.ar.sphinx.dailystory.ui.home.HomeViewModel" />
@@ -73,19 +74,42 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_trending"
-            android:layout_width="match_parent"
+        <FrameLayout
+            android:id="@+id/loading_layout_one"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11"
-            tools:itemCount="4"
-            tools:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            tools:listitem="@layout/layout_trending" />
+            app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_trending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                tools:itemCount="4"
+                tools:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:listitem="@layout/layout_trending" />
+
+            <ProgressBar
+                android:id="@+id/progressBarOne"
+                android:visibility="@{homeViewModel.isLoading ? View.VISIBLE: View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="60dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/textView12"
@@ -96,18 +120,38 @@
             android:fontFamily="sans-serif-condensed"
             android:text="Today News"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_trending" />
+            app:layout_constraintTop_toBottomOf="@+id/loading_layout_one" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_today"
+        <FrameLayout
+            android:id="@+id/loading_layout_two"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12"
-            tools:listitem="@layout/layout_today" />
+            app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_today"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                tools:listitem="@layout/layout_today" />
+
+            <ProgressBar
+                android:id="@+id/progressBarTwo"
+                android:visibility="@{homeViewModel.isLoading ? View.VISIBLE: View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="170dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"/>
+
+        </FrameLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>

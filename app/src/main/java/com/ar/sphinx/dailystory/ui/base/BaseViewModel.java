@@ -48,8 +48,8 @@ public abstract class BaseViewModel<N> extends ViewModel {
 		return isLoading;
 	}
 
-	public void setIsLoading(ObservableBoolean mIsLoading) {
-		this.isLoading = mIsLoading;
+	public void setIsLoading(boolean mIsLoading) {
+		isLoading.set(mIsLoading);
 	}
 
 	public CompositeDisposable getCompositeDisposable() {

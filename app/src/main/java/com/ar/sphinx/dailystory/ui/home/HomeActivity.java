@@ -10,7 +10,8 @@ import com.ar.sphinx.dailystory.BR;
 import com.ar.sphinx.dailystory.R;
 import com.ar.sphinx.dailystory.databinding.ActivityHomeBinding;
 import com.ar.sphinx.dailystory.ui.base.BaseActivity;
-import com.ar.sphinx.dailystory.ui.home.trending.TrendingNewsListAdapter;
+import com.ar.sphinx.dailystory.ui.home.todaynews.top.TopNewsListAdapter;
+import com.ar.sphinx.dailystory.ui.home.todaynews.trending.TrendingNewsListAdapter;
 
 import javax.inject.Inject;
 
@@ -23,6 +24,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 	HomeViewModel homeViewModel;
 
 	private TrendingNewsListAdapter trendingNewsListAdapter = new TrendingNewsListAdapter();
+	private TopNewsListAdapter topNewsListAdapter = new TopNewsListAdapter();
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,14 +33,23 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 		homeViewModel.setNavigator(this);
 		subscribeToLiveData();
 
-		//trending news adapter
+		//today trending news adapter
 		binding.rvTrending.setAdapter(trendingNewsListAdapter);
 		binding.rvTrending.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
+		//today top news adapter
+		binding.rvToday.setAdapter(topNewsListAdapter);
+		binding.rvToday.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 	}
 
 	private void subscribeToLiveData() {
-		homeViewModel.getTrendingList().observe(this, articles -> trendingNewsListAdapter.setNewsList(articles));
+		homeViewModel.getTrendingList().observe(this, articles -> {
+			trendingNewsListAdapter.setNewsList(articles);
+		});
+		homeViewModel.getTopList().observe(this, articles -> {
+			topNewsListAdapter.setNewsList(articles);
+		});
+
 	}
 
 	@Override
