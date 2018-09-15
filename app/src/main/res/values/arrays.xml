@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="newslist">
+        <item name="NYT">NYT</item>
+        <item name="CNN">CNN</item>
+        <item name="BBC">BBC</item>
+    </array>
+</resources>

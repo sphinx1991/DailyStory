@@ -1,7 +1,7 @@
 package com.ar.sphinx.dailystory.ui.home;
 
 import android.arch.lifecycle.MutableLiveData;
-import android.databinding.ObservableBoolean;
+import android.databinding.ObservableArrayList;
 
 import com.ar.sphinx.dailystory.data.DataManager;
 import com.ar.sphinx.dailystory.data.model.api.Article;
@@ -22,7 +22,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 		super(dataManager, schedulerProvider);
 	}
 
-	public void getTrendingNews() {
+	public void getNYTTrendingNews() {
 		setIsLoading(true);
 		getCompositeDisposable().add(getDataManager().doNytTopApiCall()
 				.subscribeOn(getSchedulerProvider().io())
@@ -34,9 +34,57 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				));
 	}
 
-	public void getTopNews() {
+	public void getNYTTopNews() {
 		setIsLoading(true);
 		getCompositeDisposable().add(getDataManager().doNytRecentApiCall()
+				.subscribeOn(getSchedulerProvider().io())
+				.observeOn(getSchedulerProvider().ui())
+				.subscribe(newsResponse -> {
+							topList.setValue(newsResponse.articles());
+							setIsLoading(false);
+						}
+				));
+	}
+
+	public void getCNNTrendingNews() {
+		setIsLoading(true);
+		getCompositeDisposable().add(getDataManager().doCnnTopApiCall()
+				.subscribeOn(getSchedulerProvider().io())
+				.observeOn(getSchedulerProvider().ui())
+				.subscribe(newsResponse -> {
+							trendingList.setValue(newsResponse.articles());
+							setIsLoading(false);
+						}
+				));
+	}
+
+	public void getCNNTopNews() {
+		setIsLoading(true);
+		getCompositeDisposable().add(getDataManager().doCnnRecentApiCall()
+				.subscribeOn(getSchedulerProvider().io())
+				.observeOn(getSchedulerProvider().ui())
+				.subscribe(newsResponse -> {
+							topList.setValue(newsResponse.articles());
+							setIsLoading(false);
+						}
+				));
+	}
+
+	public void getBBCTrendingNews() {
+		setIsLoading(true);
+		getCompositeDisposable().add(getDataManager().doBbcTopApiCall()
+				.subscribeOn(getSchedulerProvider().io())
+				.observeOn(getSchedulerProvider().ui())
+				.subscribe(newsResponse -> {
+							trendingList.setValue(newsResponse.articles());
+							setIsLoading(false);
+						}
+				));
+	}
+
+	public void getBBCTopNews() {
+		setIsLoading(true);
+		getCompositeDisposable().add(getDataManager().doBbcRecentApiCall()
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
@@ -49,7 +97,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 	public MutableLiveData<List<Article>> getTrendingList() {
 		if( trendingList == null){
 			trendingList = new MutableLiveData<>();
-			getTrendingNews();
+			getNYTTrendingNews();
 		}
 		return trendingList;
 	}
@@ -57,7 +105,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 	public MutableLiveData<List<Article>> getTopList() {
 		if( topList == null){
 			topList = new MutableLiveData<>();
-			getTopNews();
+			getNYTTopNews();
 		}
 		return topList;
 	}
