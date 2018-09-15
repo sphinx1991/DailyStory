@@ -41,7 +41,7 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 	//data binding of activity
 	private void performDataBinding() {
 		viewDataBinding = DataBindingUtil.setContentView(this,getLayoutId());
-		viewModel = viewModel == null ? getViewModel() : viewModel;
+		this.viewModel = viewModel == null ? getViewModel() : viewModel;
 		viewDataBinding.setVariable(getBindingVariable(), viewModel);
 		viewDataBinding.executePendingBindings();
 	}
@@ -107,7 +107,7 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 
 	//get Layout Id of xml
 	@LayoutRes
-	protected abstract int getLayoutId();
+	public abstract int getLayoutId();
 
 
 }

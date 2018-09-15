@@ -2,7 +2,9 @@ package com.ar.sphinx.dailystory.di.module;
 
 import com.ar.sphinx.dailystory.BuildConfig;
 import com.ar.sphinx.dailystory.data.remote.ApiHelper;
+import com.ar.sphinx.dailystory.utils.AutoValueGsonFactory;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.google.gson.GsonBuilder;
 
 import javax.inject.Singleton;
 
@@ -27,8 +29,8 @@ public class NetworkModule {
 		return new Retrofit.Builder()
 				.addCallAdapterFactory(rxJava2CallAdapterFactory)
 				.addConverterFactory(gsonConverterFactory)
-				.client(okHttpClient)
 				.baseUrl(BuildConfig.BASE_URL)
+				.client(okHttpClient)
 				.build()
 				.create(ApiHelper.class);
 	}
@@ -36,7 +38,9 @@ public class NetworkModule {
 	@Provides
 	@Singleton
 	GsonConverterFactory gsonConverterFactory() {
-		return GsonConverterFactory.create();
+		return GsonConverterFactory.create(
+				new GsonBuilder().registerTypeAdapterFactory(AutoValueGsonFactory.create())
+						.create());
 	}
 
 	@Provides

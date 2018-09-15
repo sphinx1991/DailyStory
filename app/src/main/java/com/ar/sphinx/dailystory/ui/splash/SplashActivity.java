@@ -47,7 +47,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding,SplashVie
 	}
 
 	@Override
-	protected int getLayoutId() {
+	public int getLayoutId() {
 		return R.layout.activity_splash;
 	}
 

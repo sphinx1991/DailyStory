@@ -49,6 +49,7 @@ ext {
     rxAdapter = '2.4.0'
     retrofitLibVersion = '2.2.0'
     autoValue = '1.5.2'
+    gsonAutoValue = '0.8.0'
 
     //Test dependencies
     junitVersion = '4.12'

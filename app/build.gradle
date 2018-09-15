@@ -20,6 +20,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
     }
     buildTypes {
         debug {
@@ -103,8 +108,10 @@ dependencies {
     implementation "com.facebook.stetho:stetho-okhttp3:$stethoLibVersion"
 
     //auto value
-    implementation "com.google.auto.value:auto-value:$rootProject.autoValue"
+    compileOnly "com.google.auto.value:auto-value:$rootProject.autoValue"
     annotationProcessor "com.google.auto.value:auto-value:$rootProject.autoValue"
+    compileOnly "com.ryanharter.auto.value:auto-value-gson:$rootProject.gsonAutoValue"
+    annotationProcessor "com.ryanharter.auto.value:auto-value-gson-annotations:$rootProject.gsonAutoValue"
 
 
     testImplementation 'junit:junit:4.12'

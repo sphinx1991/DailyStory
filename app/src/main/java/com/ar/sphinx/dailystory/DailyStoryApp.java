@@ -3,6 +3,7 @@ package com.ar.sphinx.dailystory;
 
 
 import com.ar.sphinx.dailystory.di.component.DaggerAppComponent;
+import com.facebook.stetho.Stetho;
 
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
@@ -21,5 +22,6 @@ public class DailyStoryApp extends DaggerApplication  {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		Stetho.initializeWithDefaults(this);
 	}
 }

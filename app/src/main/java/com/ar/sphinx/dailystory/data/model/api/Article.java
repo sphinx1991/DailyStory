@@ -1,6 +1,10 @@
 package com.ar.sphinx.dailystory.data.model.api;
 
+import android.support.annotation.Nullable;
+
 import com.google.auto.value.AutoValue;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
 
 /**
  * Created by sphinx.ar on 15/09/18.
@@ -9,27 +13,16 @@ import com.google.auto.value.AutoValue;
 @AutoValue
 public abstract class Article {
 
-	abstract String author();
-	abstract String title();
-	abstract String description();
-	abstract String url();
-	abstract String publishedAt();
-	abstract String content();
+	@Nullable
+	public abstract String author();
+	public abstract String title();
+	public abstract String description();
+	public abstract String url();
+	public abstract String publishedAt();
+	public abstract String content();
+	public abstract String urlToImage();
 
-	//Builder
-	static Builder builder() {
-		return new AutoValue_Article.Builder();
+	public static TypeAdapter<Article> typeAdapter(Gson gson) {
+		return new AutoValue_Article.GsonTypeAdapter(gson);
 	}
-
-	@AutoValue.Builder
-	abstract static class Builder {
-		abstract Builder setAuthor(String value);
-		abstract Builder setTitle(String value);
-		abstract Builder setDescription(String value);
-		abstract Builder setUrl(String value);
-		abstract Builder setPublishedAt(String value);
-		abstract Builder setContent(String value);
-		abstract Article build();
-	}
-
 }
