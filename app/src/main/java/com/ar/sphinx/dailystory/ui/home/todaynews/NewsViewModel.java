@@ -11,6 +11,7 @@ import java.util.TimeZone;
 /**
  * Created by sphinx.ar on 15/09/18.
  */
+//Single item news view model
 public class NewsViewModel {
 
 	private SimpleDateFormat isoDateFormatOne = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);

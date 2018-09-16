@@ -17,6 +17,7 @@ import javax.inject.Inject;
 /**
  * Created by sphinx.ar on 16/09/18.
  */
+//Detail info activity opened from each item of news list. Give details info
 public class InfoActivity extends BaseActivity<ActivityInfoBinding,InfoViewModel> implements InfoNavigator {
 
 	@Inject

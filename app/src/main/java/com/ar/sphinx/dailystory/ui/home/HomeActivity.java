@@ -30,6 +30,7 @@ import butterknife.ButterKnife;
 /**
  * Created by sphinx.ar on 15/09/18.
  */
+//Home screen / main screen where first responses are shown and user can interact.
 public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel> implements HomeNavigator {
 
 	@Inject

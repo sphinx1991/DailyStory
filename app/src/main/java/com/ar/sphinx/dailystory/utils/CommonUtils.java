@@ -11,7 +11,7 @@ public final class CommonUtils {
 
 	private CommonUtils() { }
 
-	//check connection
+	//check internet connection
 	public static boolean isNetworkConnected(Context context) {
 		ConnectivityManager cm =
 				(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

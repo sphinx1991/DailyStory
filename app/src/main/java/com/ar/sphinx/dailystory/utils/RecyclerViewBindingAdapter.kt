@@ -7,6 +7,7 @@ import android.view.ViewGroup
 /**
  * Created by sphinx.ar on 15/09/18.
  */
+//common recycler binding adapter
 abstract class RecyclerViewBindingAdapter<T : ViewDataBinding> :
 		RecyclerView.Adapter<RecyclerViewBindingAdapter.BaseViewHolder<T>>() {
 

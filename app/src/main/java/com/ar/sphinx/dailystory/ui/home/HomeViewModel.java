@@ -12,8 +12,10 @@ import java.util.List;
 /**
  * Created by sphinx.ar on 15/09/18.
  */
+//viewmodel class for home screen interacting with data for home views
 public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 
+	//mutable live arch component used to give latest changes in home activity when data changes.
 	private MutableLiveData<List<Article>> trendingList;
 	private MutableLiveData<List<Article>> topList;
 

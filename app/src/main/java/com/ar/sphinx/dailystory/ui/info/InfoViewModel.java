@@ -17,6 +17,7 @@ import java.util.TimeZone;
 /**
  * Created by sphinx.ar on 16/09/18.
  */
+//view model for info activity binded to view as medium to info model
 public class InfoViewModel extends BaseViewModel<InfoNavigator> {
 
 	public InfoViewModel(DataManager dataManager, AppSchedulerProvider schedulerProvider) {

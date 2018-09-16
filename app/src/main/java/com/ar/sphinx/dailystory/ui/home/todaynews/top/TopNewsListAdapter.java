@@ -21,6 +21,7 @@ import java.util.List;
 /**
  * Created by sphinx.ar on 16/09/18.
  */
+//today top news view adapter
 public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.MyViewHolder>{
 
 	private List<Article> articleList;

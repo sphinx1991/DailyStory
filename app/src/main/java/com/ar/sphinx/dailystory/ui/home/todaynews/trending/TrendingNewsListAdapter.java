@@ -22,6 +22,7 @@ import java.util.List;
 /**
  * Created by sphinx.ar on 15/09/18.
  */
+//todays trending news recycler adapter
 public class TrendingNewsListAdapter extends RecyclerView.Adapter<TrendingNewsListAdapter.MyViewHolder>{
 
 	private List<Article> articleList;

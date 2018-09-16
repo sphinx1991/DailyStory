@@ -7,6 +7,7 @@ import com.ar.sphinx.dailystory.ui.base.BaseViewModel;
 /**
  * Created by sphinx.ar on 14/09/18.
  */
+//view model for splash activity
 public class SplashViewModel extends BaseViewModel<SplashNavigator> {
 
 	public SplashViewModel(DataManager dataManager, AppSchedulerProvider schedulerProvider) {

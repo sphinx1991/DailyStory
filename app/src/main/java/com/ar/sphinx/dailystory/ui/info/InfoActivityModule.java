@@ -9,6 +9,7 @@ import dagger.Provides;
 /**
  * Created by sphinx.ar on 16/09/18.
  */
+//DI module for info screen injected
 @Module
 public class InfoActivityModule {
 

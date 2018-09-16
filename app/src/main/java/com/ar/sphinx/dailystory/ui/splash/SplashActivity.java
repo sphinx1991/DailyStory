@@ -19,6 +19,7 @@ import javax.inject.Inject;
 /**
  * Created by sphinx.ar on 14/09/18.
  */
+//splash screen which is first view shown when app opens, show loading basically and redirects to next act.
 public class SplashActivity extends BaseActivity<ActivitySplashBinding,SplashViewModel> implements SplashNavigator {
 
 	@Inject

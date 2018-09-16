@@ -9,6 +9,7 @@ import dagger.Provides;
 /**
  * Created by sphinx.ar on 15/09/18.
  */
+//DI module for home screen
 @Module
 public class HomeActivityModule {
 
