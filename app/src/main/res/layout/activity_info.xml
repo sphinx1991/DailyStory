@@ -13,102 +13,122 @@
 
     </data>
 
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:elevation="5dp">
 
-            <ImageView
-                android:id="@+id/image_url"
-                loadUrlImage="@{infoViewModel.imgUrl}"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/sample" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                app:theme="@style/ToolBarStyle"
+                android:layout_height="?attr/actionBarSize" />
+        </android.support.design.widget.AppBarLayout>
 
-            <TextView
-                android:id="@+id/tv_heading"
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:padding="5dp"
-                android:text="@{infoViewModel.heading}"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_url" />
+                android:paddingBottom="10dp">
 
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@{infoViewModel.date}"
-                android:textColor="#bf7900"
-                android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toTopOf="@+id/imageView3"
-                tools:text="15th Sep 2018" />
+                <ImageView
+                    android:id="@+id/image_url"
+                    loadUrlImage="@{infoViewModel.imgUrl}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/sample" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_heading"
-                app:srcCompat="@drawable/ic_edit_pencil" />
+                <TextView
+                    android:id="@+id/tv_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="5dp"
+                    android:text="@{infoViewModel.heading}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_url" />
 
-            <View
-                android:id="@+id/guideline"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:background="@color/light_gray"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@{infoViewModel.date}"
+                    android:textColor="#bf7900"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3"
+                    tools:text="15th Sep 2018" />
 
-            <ImageView
-                android:id="@+id/iv_share"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:padding="5dp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_heading"
-                app:layout_constraintTop_toBottomOf="@+id/tv_heading"
-                app:srcCompat="@drawable/ic_share_black" />
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_heading"
+                    app:srcCompat="@drawable/ic_edit_pencil" />
 
-            <TextView
-                android:id="@+id/tv_content"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif"
-                android:text="@{infoViewModel.description}"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline"
-                tools:text="Reuters Image caption North Carolina Governor Roy Cooper called the storm historic .The outer bands of Hurricane Florence are lashing parts of the US East Coast. Officials warn of life-threatening storm surges in both North and South Carolina" />
+                <View
+                    android:id="@+id/guideline"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/light_gray"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 
-        </android.support.constraint.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/iv_share"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:padding="5dp"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_heading"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_heading"
+                    app:srcCompat="@drawable/ic_share_black" />
 
-    </android.support.v4.widget.NestedScrollView>
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@{infoViewModel.description}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline"
+                    tools:text="Reuters Image caption North Carolina Governor Roy Cooper called the storm historic .The outer bands of Hurricane Florence are lashing parts of the US East Coast. Officials warn of life-threatening storm surges in both North and South Carolina" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
 </layout>

@@ -24,9 +24,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="serif"
-            android:text="DAILY STORY"
+            android:text="@string/daily_story"
             android:textAllCaps="false"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Here's your news feed"
-            android:textSize="12sp"
+            android:text="@string/here_s_your_news_feed"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -70,7 +70,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Trending Topics"
+            android:text="@string/today_s_trending_topics"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
@@ -118,7 +119,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Today News"
+            android:text="@string/today_s_recent_news"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loading_layout_one" />
 

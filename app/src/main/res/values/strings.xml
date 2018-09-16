@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Daily Story</string>
     <string name="title">DAILY STORY</string>
+    <string name="daily_story">DAILY STORY</string>
+    <string name="here_s_your_news_feed">Here\'s your news feed</string>
+    <string name="today_s_trending_topics">Today\'s Trending Topics</string>
+    <string name="today_s_recent_news">Today\'s Recent News</string>
 </resources>
