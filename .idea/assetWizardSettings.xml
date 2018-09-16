@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_fire" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../../../../fire.svg" />
+                            <entry key="outputName" value="ic_exit" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../../../../exit.svg" />
                           </map>
                         </option>
                       </PersistentState>
