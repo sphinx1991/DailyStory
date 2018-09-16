@@ -1,7 +1,6 @@
 package com.ar.sphinx.dailystory.ui.home;
 
 import android.arch.lifecycle.MutableLiveData;
-import android.databinding.ObservableArrayList;
 
 import com.ar.sphinx.dailystory.data.DataManager;
 import com.ar.sphinx.dailystory.data.model.api.Article;

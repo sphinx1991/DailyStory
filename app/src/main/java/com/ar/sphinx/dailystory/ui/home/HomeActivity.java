@@ -4,8 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -30,12 +35,20 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 	@Inject
 	HomeViewModel homeViewModel;
 
-	//usage of butterknife
+	//usage of butter knife
 	@BindView(R.id.spinner)
 	Spinner spinner;
 
-	@BindView(R.id.rv_trending)
-	RecyclerView rvTrending;
+	@BindView(R.id.drawerLayout)
+	DrawerLayout drawerLayout;
+
+	@BindView(R.id.nv)
+	NavigationView navigationView;
+
+	@BindView(R.id.toolbarHome)
+	Toolbar toolbar;
+	ActionBarDrawerToggle actionBarDrawerToggle;
+
 
 	private TrendingNewsListAdapter trendingNewsListAdapter = new TrendingNewsListAdapter();
 	private TopNewsListAdapter topNewsListAdapter = new TopNewsListAdapter();
@@ -44,6 +57,8 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ButterKnife.bind(this);
+		setSupportActionBar(toolbar);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		homeViewModel.setNavigator(this);
 		subscribeToLiveData();
 		setUpViews();
@@ -81,15 +96,32 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 	}
 
 	public void setUpViews() {
-		//getting first recycler view id using butterknife
+
+		actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.Open, R.string.Close);
+		drawerLayout.addDrawerListener(actionBarDrawerToggle);
+		actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
+		actionBarDrawerToggle.syncState();
+		navigationView.bringToFront();
+		navigationView.setNavigationItemSelectedListener(item -> {
+			int id = item.getItemId();
+			switch(id)
+			{
+				case R.id.exit:
+					finish();
+					return true;
+				default:
+					drawerLayout.closeDrawer(GravityCompat.START);
+					return true;
+			}
+		});
+
+		ActivityHomeBinding binding = getViewDataBinding();
 		//today trending news adapter
-		rvTrending.setAdapter(trendingNewsListAdapter);
-		rvTrending.setLayoutManager(new LinearLayoutManager(this,
+		binding.rvTrending.setAdapter(trendingNewsListAdapter);
+		binding.rvTrending.setLayoutManager(new LinearLayoutManager(this,
 				LinearLayoutManager.HORIZONTAL,false));
 
-		//getting second recycler view id using data binding
 		//today top news adapter
-		ActivityHomeBinding binding = getViewDataBinding();
 		binding.rvToday.setAdapter(topNewsListAdapter);
 		binding.rvToday.setLayoutManager(new LinearLayoutManager(this,
 				LinearLayoutManager.VERTICAL,false));
@@ -110,5 +142,15 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 			}
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				drawerLayout.openDrawer(GravityCompat.START);
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

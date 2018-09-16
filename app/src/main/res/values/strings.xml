@@ -5,4 +5,6 @@
     <string name="here_s_your_news_feed">Here\'s your news feed</string>
     <string name="today_s_trending_topics">Today\'s Trending Topics</string>
     <string name="today_s_recent_news">Today\'s Hot News</string>
+    <string name="Open">Open</string>
+    <string name="Close">close</string>
 </resources>
