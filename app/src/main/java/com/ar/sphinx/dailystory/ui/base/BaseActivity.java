@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ProgressBar;
@@ -35,6 +36,8 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		performDependencyInjection();
 		super.onCreate(savedInstanceState);
+		// Required for Kitkat and below to load Vector Drawables
+		AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 		performDataBinding();
 	}
 

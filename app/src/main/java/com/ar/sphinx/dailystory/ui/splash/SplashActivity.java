@@ -41,18 +41,6 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding,SplashVie
 		checkForNavigation();
 	}
 
-	private void checkForNavigation() {
-		splashViewModel.getCompositeDisposable().add(Observable.timer(2000, TimeUnit.MILLISECONDS)
-				.subscribeOn(splashViewModel.getSchedulerProvider().io()).repeat()
-				.observeOn(AndroidSchedulers.mainThread()).subscribe(aLong -> {
-					if(isNetworkpresent()) {
-						splashViewModel.decideNextActivity();
-					} else {
-						Toast.makeText(getApplicationContext(), R.string.net_check, Toast.LENGTH_SHORT).show();
-					}
-				}));
-	}
-
 	@Override
 	public int getBindingVariable() {
 		return BR.splashViewModel;
@@ -79,6 +67,18 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding,SplashVie
 	protected void onDestroy() {
 		super.onDestroy();
 		splashViewModel.getCompositeDisposable().dispose();
+	}
+
+	private void checkForNavigation() {
+		splashViewModel.getCompositeDisposable().add(Observable.timer(2000, TimeUnit.MILLISECONDS)
+				.subscribeOn(splashViewModel.getSchedulerProvider().io()).repeat()
+				.observeOn(AndroidSchedulers.mainThread()).subscribe(aLong -> {
+					if(isNetworkpresent()) {
+						splashViewModel.decideNextActivity();
+					} else {
+						Toast.makeText(getApplicationContext(), R.string.net_check, Toast.LENGTH_SHORT).show();
+					}
+				}));
 	}
 
 	public static Intent getStartIntent(Context context) {
