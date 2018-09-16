@@ -28,7 +28,16 @@ public abstract class Article {
 	@Nullable
 	public abstract String urlToImage();
 
+	public Article() {
+
+	}
+
 	public static TypeAdapter<Article> typeAdapter(Gson gson) {
 		return new AutoValue_Article.GsonTypeAdapter(gson);
+	}
+
+	public static Article create(String author,String title,String description,
+	                             String url,String publishedAt,String content,String urlToImage) {
+		return new AutoValue_Article(author, title,description,url,publishedAt,content,urlToImage);
 	}
 }

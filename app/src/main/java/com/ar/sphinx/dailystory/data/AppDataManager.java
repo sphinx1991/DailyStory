@@ -26,8 +26,8 @@ public class AppDataManager implements DataManager {
 	}
 
 	@Override
-	public Single<NewsResponse> doNytTopApiCall() {
-		return apiHelper.doNytTopApiCall();
+	public Single<NewsResponse> doNytTrendingApiCall() {
+		return apiHelper.doNytTrendingApiCall();
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class AppDataManager implements DataManager {
 	}
 
 	@Override
-	public Single<NewsResponse> doCnnTopApiCall() {
-		return apiHelper.doCnnTopApiCall();
+	public Single<NewsResponse> doCnnTrendingApiCall() {
+		return apiHelper.doCnnTrendingApiCall();
 	}
 
 	@Override
@@ -46,8 +46,8 @@ public class AppDataManager implements DataManager {
 	}
 
 	@Override
-	public Single<NewsResponse> doBbcTopApiCall() {
-		return apiHelper.doBbcTopApiCall();
+	public Single<NewsResponse> doBbcTrendingApiCall() {
+		return apiHelper.doBbcTrendingApiCall();
 	}
 
 	@Override

@@ -11,20 +11,20 @@ import retrofit2.http.GET;
 // all calls related to api
 public interface ApiHelper {
 
-	@GET(ApiEndPoint.ENDPOINT_TOP_NYT)
-	Single<NewsResponse> doNytTopApiCall();
+	@GET(ApiEndPoint.ENDPOINT_TRENDING_NYT)
+	Single<NewsResponse> doNytTrendingApiCall();
 
 	@GET(ApiEndPoint.ENDPOINT_RECENT_NYT)
 	Single<NewsResponse> doNytRecentApiCall();
 
-	@GET(ApiEndPoint.ENDPOINT_TOP_CNN)
-	Single<NewsResponse> doCnnTopApiCall();
+	@GET(ApiEndPoint.ENDPOINT_TRENDING_CNN)
+	Single<NewsResponse> doCnnTrendingApiCall();
 
 	@GET(ApiEndPoint.ENDPOINT_RECENT_CNN)
 	Single<NewsResponse> doCnnRecentApiCall();
 
-	@GET(ApiEndPoint.ENDPOINT_TOP_BBC)
-	Single<NewsResponse> doBbcTopApiCall();
+	@GET(ApiEndPoint.ENDPOINT_TRENDING_BBC)
+	Single<NewsResponse> doBbcTrendingApiCall();
 
 	@GET(ApiEndPoint.ENDPOINT_RECENT_BBC)
 	Single<NewsResponse> doBbcRecentApiCall();

@@ -20,6 +20,10 @@ public abstract class NewsResponse {
 	public static TypeAdapter<NewsResponse> typeAdapter(Gson gson) {
 		return new AutoValue_NewsResponse.GsonTypeAdapter(gson);
 	}
+
+	public static NewsResponse create(String status, int totalResults, List<Article> articleList) {
+		return new AutoValue_NewsResponse(status, totalResults,articleList);
+	}
 }
 
 

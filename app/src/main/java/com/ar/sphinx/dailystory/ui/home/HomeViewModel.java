@@ -23,7 +23,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 
 	public void getNYTTrendingNews() {
 		setIsLoading(true);
-		getCompositeDisposable().add(getDataManager().doNytTopApiCall()
+		getCompositeDisposable().add(getDataManager().doNytTrendingApiCall()
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
@@ -33,7 +33,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				));
 	}
 
-	public void getNYTTopNews() {
+	public void getNYTRecentNews() {
 		setIsLoading(true);
 		getCompositeDisposable().add(getDataManager().doNytRecentApiCall()
 				.subscribeOn(getSchedulerProvider().io())
@@ -47,7 +47,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 
 	public void getCNNTrendingNews() {
 		setIsLoading(true);
-		getCompositeDisposable().add(getDataManager().doCnnTopApiCall()
+		getCompositeDisposable().add(getDataManager().doCnnTrendingApiCall()
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
@@ -57,7 +57,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				));
 	}
 
-	public void getCNNTopNews() {
+	public void getCNNRecentNews() {
 		setIsLoading(true);
 		getCompositeDisposable().add(getDataManager().doCnnRecentApiCall()
 				.subscribeOn(getSchedulerProvider().io())
@@ -71,7 +71,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 
 	public void getBBCTrendingNews() {
 		setIsLoading(true);
-		getCompositeDisposable().add(getDataManager().doBbcTopApiCall()
+		getCompositeDisposable().add(getDataManager().doBbcTrendingApiCall()
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
@@ -81,7 +81,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				));
 	}
 
-	public void getBBCTopNews() {
+	public void getBBCRecentNews() {
 		setIsLoading(true);
 		getCompositeDisposable().add(getDataManager().doBbcRecentApiCall()
 				.subscribeOn(getSchedulerProvider().io())
@@ -96,7 +96,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 	public MutableLiveData<List<Article>> getTrendingList() {
 		if( trendingList == null){
 			trendingList = new MutableLiveData<>();
-			getNYTTrendingNews();
+			getNYTRecentNews();
 		}
 		return trendingList;
 	}
@@ -104,7 +104,7 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 	public MutableLiveData<List<Article>> getTopList() {
 		if( topList == null){
 			topList = new MutableLiveData<>();
-			getNYTTopNews();
+			getNYTRecentNews();
 		}
 		return topList;
 	}

@@ -131,13 +131,13 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 			{
 				if(position == 0) {
 					homeViewModel.getNYTTrendingNews();
-					homeViewModel.getNYTTopNews();
+					homeViewModel.getNYTRecentNews();
 				}else if(position == 1) {
 					homeViewModel.getCNNTrendingNews();
-					homeViewModel.getCNNTopNews();
+					homeViewModel.getCNNRecentNews();
 				}else {
 					homeViewModel.getBBCTrendingNews();
-					homeViewModel.getBBCTopNews();
+					homeViewModel.getBBCRecentNews();
 				}
 			}
 			public void onNothingSelected(AdapterView<?> parent) { }
