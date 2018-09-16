@@ -21,7 +21,7 @@ import com.ar.sphinx.dailystory.rxproviders.AppSchedulerProvider;
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.TestScheduler;
 
-
+//separate test class for Schedulers since it throws null exception for RxAndroid Schedulers.
 public class TestSchedulerProvider extends AppSchedulerProvider {
 
     private final TestScheduler mTestScheduler;

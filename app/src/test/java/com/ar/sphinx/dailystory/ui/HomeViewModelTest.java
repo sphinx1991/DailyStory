@@ -24,6 +24,8 @@ import static org.mockito.Mockito.doReturn;
 /**
  * Created by sphinx.ar on 16/09/18.
  */
+
+//Unit test for api for homeviewmodel class
 @RunWith(MockitoJUnitRunner.class)
 public class HomeViewModelTest {
 
@@ -48,6 +50,7 @@ public class HomeViewModelTest {
 		homeViewModel.setNavigator(homeNavigator);
 	}
 
+	//testing one api, similar for other apis.
 	@Test
 	public void getNytRecentNews() {
 		ArrayList<Article> articles = new ArrayList<>();
