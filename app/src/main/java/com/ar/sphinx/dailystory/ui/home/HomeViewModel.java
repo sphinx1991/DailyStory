@@ -1,6 +1,7 @@
 package com.ar.sphinx.dailystory.ui.home;
 
 import android.arch.lifecycle.MutableLiveData;
+import android.util.Log;
 
 import com.ar.sphinx.dailystory.data.DataManager;
 import com.ar.sphinx.dailystory.data.model.api.Article;
@@ -29,10 +30,9 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
-							trendingList.setValue(newsResponse.articles());
-							setIsLoading(false);
-						}
-				));
+					trendingList.setValue(newsResponse.articles());
+					setIsLoading(false);
+				}, throwable -> Log.d("error", throwable.getMessage())));
 	}
 
 	public void getNYTRecentNews() {
@@ -41,10 +41,9 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
-							topList.setValue(newsResponse.articles());
-							setIsLoading(false);
-						}
-				));
+					topList.setValue(newsResponse.articles());
+					setIsLoading(false);
+				}, throwable -> Log.d("error", throwable.getMessage())));
 	}
 
 	public void getCNNTrendingNews() {
@@ -53,10 +52,9 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
-							trendingList.setValue(newsResponse.articles());
-							setIsLoading(false);
-						}
-				));
+					trendingList.setValue(newsResponse.articles());
+					setIsLoading(false);
+				}, throwable -> Log.d("error", throwable.getMessage())));
 	}
 
 	public void getCNNRecentNews() {
@@ -65,10 +63,9 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
-							topList.setValue(newsResponse.articles());
-							setIsLoading(false);
-						}
-				));
+					topList.setValue(newsResponse.articles());
+					setIsLoading(false);
+				}, throwable -> Log.d("error", throwable.getMessage())));
 	}
 
 	public void getBBCTrendingNews() {
@@ -77,10 +74,9 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
-							trendingList.setValue(newsResponse.articles());
-							setIsLoading(false);
-						}
-				));
+					trendingList.setValue(newsResponse.articles());
+					setIsLoading(false);
+				}, throwable -> Log.d("error", throwable.getMessage())));
 	}
 
 	public void getBBCRecentNews() {
@@ -89,10 +85,9 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 				.subscribeOn(getSchedulerProvider().io())
 				.observeOn(getSchedulerProvider().ui())
 				.subscribe(newsResponse -> {
-							topList.setValue(newsResponse.articles());
-							setIsLoading(false);
-						}
-				));
+					topList.setValue(newsResponse.articles());
+					setIsLoading(false);
+				}, throwable -> Log.d("error", throwable.getMessage())));
 	}
 
 	public MutableLiveData<List<Article>> getTrendingList() {

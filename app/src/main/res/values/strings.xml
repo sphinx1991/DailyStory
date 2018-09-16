@@ -7,4 +7,5 @@
     <string name="today_s_recent_news">Today\'s Hot News</string>
     <string name="Open">Open</string>
     <string name="Close">close</string>
+    <string name="net_check">Please check your network.</string>
 </resources>

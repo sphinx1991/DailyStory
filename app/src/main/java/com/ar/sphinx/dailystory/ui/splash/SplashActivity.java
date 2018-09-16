@@ -5,8 +5,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.ar.sphinx.dailystory.BR;
 import com.ar.sphinx.dailystory.R;
@@ -14,7 +14,12 @@ import com.ar.sphinx.dailystory.databinding.ActivitySplashBinding;
 import com.ar.sphinx.dailystory.ui.base.BaseActivity;
 import com.ar.sphinx.dailystory.ui.home.HomeActivity;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by sphinx.ar on 14/09/18.
@@ -32,9 +37,20 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding,SplashVie
 		requestPermissionsSafely(new String[]{Manifest.permission.INTERNET,
 						Manifest.permission.ACCESS_NETWORK_STATE},
 				123);
-		new Handler().postDelayed(() -> {
-			splashViewModel.decideNextActivity();
-		},3000);
+
+		checkForNavigation();
+	}
+
+	private void checkForNavigation() {
+		splashViewModel.getCompositeDisposable().add(Observable.timer(2000, TimeUnit.MILLISECONDS)
+				.subscribeOn(splashViewModel.getSchedulerProvider().io()).repeat()
+				.observeOn(AndroidSchedulers.mainThread()).subscribe(aLong -> {
+					if(isNetworkpresent()) {
+						splashViewModel.decideNextActivity();
+					} else {
+						Toast.makeText(getApplicationContext(), R.string.net_check, Toast.LENGTH_SHORT).show();
+					}
+				}));
 	}
 
 	@Override
@@ -57,6 +73,12 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding,SplashVie
 		Intent intent = HomeActivity.getStartIntent(SplashActivity.this);
 		startActivity(intent);
 		finish();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		splashViewModel.getCompositeDisposable().dispose();
 	}
 
 	public static Intent getStartIntent(Context context) {
