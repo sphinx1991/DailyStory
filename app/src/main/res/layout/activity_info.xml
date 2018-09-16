@@ -102,15 +102,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 
-                <ImageView
-                    android:id="@+id/iv_hot"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:padding="5dp"
-                    app:layout_constraintEnd_toEndOf="@+id/tv_heading"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_heading"
-                    app:srcCompat="@drawable/ic_share_black" />
-
                 <TextView
                     android:id="@+id/tv_content"
                     android:layout_width="0dp"

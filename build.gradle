@@ -50,6 +50,7 @@ ext {
     retrofitLibVersion = '2.2.0'
     autoValue = '1.5.2'
     gsonAutoValue = '0.8.0'
+    butterKnife = '8.8.1'
 
     //Test dependencies
     junitVersion = '4.12'

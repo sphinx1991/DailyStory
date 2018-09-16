@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Spinner;
 
 import com.ar.sphinx.dailystory.BR;
 import com.ar.sphinx.dailystory.R;
@@ -17,6 +19,9 @@ import com.ar.sphinx.dailystory.ui.home.todaynews.trending.TrendingNewsListAdapt
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by sphinx.ar on 15/09/18.
  */
@@ -25,12 +30,20 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 	@Inject
 	HomeViewModel homeViewModel;
 
+	//usage of butterknife
+	@BindView(R.id.spinner)
+	Spinner spinner;
+
+	@BindView(R.id.rv_trending)
+	RecyclerView rvTrending;
+
 	private TrendingNewsListAdapter trendingNewsListAdapter = new TrendingNewsListAdapter();
 	private TopNewsListAdapter topNewsListAdapter = new TopNewsListAdapter();
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		ButterKnife.bind(this);
 		homeViewModel.setNavigator(this);
 		subscribeToLiveData();
 		setUpViews();
@@ -68,18 +81,20 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 	}
 
 	public void setUpViews() {
-		ActivityHomeBinding binding = getViewDataBinding();
+		//getting first recycler view id using butterknife
 		//today trending news adapter
-		binding.rvTrending.setAdapter(trendingNewsListAdapter);
-		binding.rvTrending.setLayoutManager(new LinearLayoutManager(this,
+		rvTrending.setAdapter(trendingNewsListAdapter);
+		rvTrending.setLayoutManager(new LinearLayoutManager(this,
 				LinearLayoutManager.HORIZONTAL,false));
 
+		//getting second recycler view id using data binding
 		//today top news adapter
+		ActivityHomeBinding binding = getViewDataBinding();
 		binding.rvToday.setAdapter(topNewsListAdapter);
 		binding.rvToday.setLayoutManager(new LinearLayoutManager(this,
 				LinearLayoutManager.VERTICAL,false));
 
-		binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
 			{
 				if(position == 0) {

@@ -113,6 +113,10 @@ dependencies {
     compileOnly "com.ryanharter.auto.value:auto-value-gson:$rootProject.gsonAutoValue"
     annotationProcessor "com.ryanharter.auto.value:auto-value-gson-annotations:$rootProject.gsonAutoValue"
 
+    //butterknife
+    implementation "com.jakewharton:butterknife:$rootProject.butterKnife"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnife"
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
